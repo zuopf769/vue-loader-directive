@@ -1,0 +1,100 @@
+
+.width-auto {
+    width: auto;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+    // 层叠上下文，使得fixed的基准变成这个元素
+    // 不能使用translate，因为最外面有scale缩放，如果使用translate会影响缩放
+    transform: rotate(0);
+
+    .fixed-table-head {
+        position: fixed;
+        display: none;
+        flex-wrap: nowrap;
+        z-index: 20;
+        & > span {
+            // 需要与真实表格中的样式保持一致
+            display: inline-block;
+            padding: 8px 15px;
+            font-size: 15px;
+            font-weight: 600;
+            background-color: #efefef;
+            white-space: nowrap;
+        }
+    }
+
+    .tableHeadFixed {
+        display: flex;
+    }
+
+    .table {
+        width: 100%;
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.42857143;
+        background: transparent;
+        margin-bottom: 10px;
+
+        th {
+            text-align: left;
+        }
+    }
+
+    .table > thead > tr > th,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+        padding: 8px 15px;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    .table > thead > tr > th {
+        border-bottom: 1px solid #eaeff0;
+    }
+
+    .table > tbody > tr > td,
+    .table > tfoot > tr > td {
+        border-top: 1px solid #eaeff0;
+    }
+
+    .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: #fafbfc;
+    }
+
+    .table-striped > tbody > tr:hover {
+        background-color: #e0eaf5;
+        color: #333;
+    }
+
+}
+
+/* 表格手机适配 */
+@media screen and (max-width: 600px) {
+
+    .card-box {
+        padding: 5px;
+    }
+
+    .table-responsive {
+        .table,
+        .table th,
+        .fixed-table-head span {
+            font-size: 12px;
+        }
+        .table > thead > tr > th,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > td,
+        .fixed-table-head span {
+            padding: 4px;
+        }
+    }
+}
